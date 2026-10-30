@@ -1,0 +1,12 @@
+services:
+  timetrack:
+    build: .
+    container_name: timetrack
+    restart: unless-stopped
+    ports:
+      - "8030:8000"
+    volumes:
+      - timetrack-data:/app/data
+
+volumes:
+  timetrack-data:

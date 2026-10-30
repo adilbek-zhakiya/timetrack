@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Учёт рабочего времени</title>
+  <link rel="stylesheet" href="/static/style.css?v=6">
+</head>
+<body>
+  <main>
+    <!-- Страница 1: все сотрудники -->
+    <section id="page-list">
+      <h1>Учёт рабочего времени</h1>
+
+      <form id="add-employee" class="row-form">
+        <input name="name" placeholder="Имя и фамилия нового сотрудника" maxlength="100" autocomplete="off" required>
+        <button type="submit">Добавить</button>
+      </form>
+
+      <form class="period">
+        <label>С <input type="date" name="date_from" required></label>
+        <label>По <input type="date" name="date_to" required></label>
+      </form>
+
+      <table id="employees">
+        <thead><tr><th>Сотрудник</th><th>Сейчас</th><th class="num">За период</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p id="employees-empty" class="empty" hidden>Пока никого нет. Добавьте первого сотрудника.</p>
+    </section>
+
+    <!-- Страница 2: один сотрудник -->
+    <section id="page-employee" hidden>
+      <a href="#/" class="back">← Все сотрудники</a>
+      <h1 id="employee-name"></h1>
+
+      <form id="timer" class="timer">
+        <input name="description" maxlength="200" autocomplete="off" placeholder="Над чем работает сотрудник">
+        <button type="submit" name="action">Старт</button>
+        <span id="timer-clock" class="clock" hidden>0:00:00</span>
+      </form>
+
+      <form class="period">
+        <label>С <input type="date" name="date_from" required></label>
+        <label>По <input type="date" name="date_to" required></label>
+      </form>
+
+      <p class="summary">Всего за период: <strong id="employee-total">0 мин</strong></p>
+
+      <table id="entries">
+        <thead><tr><th>Когда</th><th>Задача</th><th class="num">Длительность</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p id="entries-empty" class="empty" hidden>За этот период записей нет.</p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/static/app.js?v=6"></script>
+</body>
+</html>
